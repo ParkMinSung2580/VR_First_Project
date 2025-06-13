@@ -2,7 +2,7 @@
 초반 셋팅부터 패키지 다운, 그와중에 패키지 버전 다운 실수해서 고친다고 개고생을 했다
 하루를 날렸다
  
-일단 VR 기능을 여러 익히는데 초점을 두자 
+일단 VR 기능을 여러 익히는데 초점을 두자 - XR-Interaction-Toolkit-Examples 프로젝트 참고 
 
 1.그랩 상호작용시 해당 오브젝트의 Color가 바뀌는 것을 익혔다.
 Color 변경 말고도 여러가지 기능 가능 - XR Interaction Affordance State Provider은 Unity의 XR Interaction Toolkit (XRI)에서 
