@@ -6,19 +6,19 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class GrabbableObject : MonoBehaviour
 {
-    private XRGrabInteractable grabInteractable;
+    [SerializeField] private XRGrabInteractable.MovementType _movementType;
 
+    private XRGrabInteractable grabInteractable;
     void Start()
     {
         //XRGrabInteractable 스크립트 어태치
         grabInteractable = GetComponent<XRGrabInteractable>();
-        
-        if(grabInteractable == null)
+
+        if (grabInteractable == null)
         {
             gameObject.AddComponent<XRGrabInteractable>();
         }
-        Debug.Log(grabInteractable.movementType);
-        grabInteractable.movementType = XRBaseInteractable.MovementType.VelocityTracking;
+        grabInteractable.movementType = _movementType;
 
         // 이벤트 등록
         grabInteractable.selectEntered.AddListener(OnGrab);

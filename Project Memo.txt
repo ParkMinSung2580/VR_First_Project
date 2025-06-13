@@ -1,0 +1,27 @@
+무엇을 해야 할 지 감이 안잡힌다
+초반 셋팅부터 패키지 다운, 그와중에 패키지 버전 다운 실수해서 고친다고 개고생을 했다
+하루를 날렸다
+ 
+일단 VR 기능을 여러 익히는데 초점을 두자 
+
+1.그랩 상호작용시 해당 오브젝트의 Color가 바뀌는 것을 익혔다.
+Color 변경 말고도 여러가지 기능 가능 - XR Interaction Affordance State Provider은 Unity의 XR Interaction Toolkit (XRI)에서 
+상호작용 가능한 객체(Interactable)의 상태 변화를 감지하고, 이를 시각적/청각적 피드백(어포던스, Affordance)으로 연결해주는 핵심 컴포넌트
+
+하다가 보니  XR Interaction Toolkit (XRI) 3.1.1 버전은 이전 2.x 버전에 비해 어포던스(Affordance) 시스템이 변경된 것을 알았다.
+오후에는 XR Interactable Affordance (Visual) 이라는 라는 새로운 통합 컴포넌트를 사용해보기
+
+▶유니티 deprecated, obsolete 
+deprecated : 폐지예정
+obsolete : 폐지됨
+
+-하다가 Activate Click Animation Mode - None이 기본값인데 Activated하지 않으면 작동안함
+
+//참고 문헌 - xr.interaction.toolkit@2.3 docs
+https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.3/manual/affordance-system.html
+
+
+
+
+
+//지금은 deprecated되었다 
