@@ -8,17 +8,16 @@
 Color 변경 말고도 여러가지 기능 가능 - XR Interaction Affordance State Provider은 Unity의 XR Interaction Toolkit (XRI)에서 
 상호작용 가능한 객체(Interactable)의 상태 변화를 감지하고, 이를 시각적/청각적 피드백(어포던스, Affordance)으로 연결해주는 핵심 컴포넌트
 
-하다가 보니  XR Interaction Toolkit (XRI) 3.1.1 버전은 이전 2.x 버전에 비해 어포던스(Affordance) 시스템이 변경된 것을 알았다.
-오후에는 XR Interactable Affordance (Visual) 이라는 라는 새로운 통합 컴포넌트를 사용해보기
+-하다가 Activate Click Animation Mode - None이 기본값인데 Activated하지 않으면 작동안함
+
+interactable - 상호작용 가능한 물체, interactor - 상호작용 하는 주체 (VR컨트롤러,손)
+
+//참고 문헌 - xr.interaction.toolkit@2.3 docs
+https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.3/manual/affordance-system.html
 
 ▶유니티 deprecated, obsolete 
 deprecated : 폐지예정
 obsolete : 폐지됨
-
--하다가 Activate Click Animation Mode - None이 기본값인데 Activated하지 않으면 작동안함
-
-//참고 문헌 - xr.interaction.toolkit@2.3 docs
-https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.3/manual/affordance-system.html
 
 
 
