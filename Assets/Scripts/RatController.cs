@@ -21,17 +21,14 @@ public class RatController : MonoBehaviour
         //Vector3 forward = new Vector3(transform.forward.x, 0f, transform.forward.z).normalized;
         m_rigidbody.velocity = transform.forward * m_speed;
     }
-
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        // Wall 태그를 가진 오브젝트와 부딪혔을 때
+        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.CompareTag("Wall"))
         {
-            // 이 쥐 오브젝트를 파괴합니다.
             Destroy(gameObject);
         }
-        // PlayerHand 태그를 가진 오브젝트와 부딪혔을 때 (플레이어 컨트롤러)
-        else if (collision.gameObject.CompareTag("PlayerHand"))
+        else if (collision.gameObject.CompareTag("Mallet"))
         {
             // 점수를 올리고 (GameManager를 통해)
             if (GameManager.Instance != null)

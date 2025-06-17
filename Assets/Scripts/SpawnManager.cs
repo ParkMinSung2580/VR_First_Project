@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
     //나중에 오브젝트 풀링에서 가져오게 하기
     [SerializeField] private GameObject m_ratPrefab; // 쥐 프리팹을 연결할 변수
     [SerializeField] private Transform[] m_spawnPoints; // 쥐가 생성될 위치들
-    [SerializeField] private float m_spawnInterval = 0.1f; // 쥐 생성 간격 (초)
+    [SerializeField] private float m_spawnInterval = 1.5f; // 쥐 생성 간격 (초)
 
     [SerializeField] private float m_roomHalfSize = 23f; // 방의 반지름 25 벽때문에 -2 해주기
 
@@ -19,9 +19,17 @@ public class SpawnManager : MonoBehaviour
 
     private Vector3 m_spawnPos;
 
-    void Start()
+    public void SpawnRat()
     {
         StartCoroutine(SpawnRatRoutine2());
+    }
+
+    private void Update()
+    {
+        if(!GameManager.Instance.IsGamePlay)
+        {
+            StopCoroutine(SpawnRatRoutine2());
+        }
     }
 
     //스폰포인트로 지정하여 소환

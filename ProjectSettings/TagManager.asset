@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Anchor
   - Wall
+  - Mallet
+  - Rat
   layers:
   - Default
   - TransparentFX
