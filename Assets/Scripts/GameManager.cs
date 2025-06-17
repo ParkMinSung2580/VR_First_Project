@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    [SerializeField] public SpawnManager spawnManager;
 
     //시간이없어서 여기만듬
     [Header("UI Components")]
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     public bool IsGamePlay { get; set; } = false;
 
     private int score = 0;
-    private float gameTime = 5.0f;
+    private float gameTime = 60.0f;
     private float currentTime;
 
     void Awake()
@@ -67,6 +68,12 @@ public class GameManager : MonoBehaviour
         {
             m_restartButton.onClick.RemoveAllListeners();
             m_restartButton.onClick.AddListener(RestartGame);
+        }
+
+        // 게임 시작 시 쥐 스폰 코루틴 시작
+        if (spawnManager != null)
+        {
+            spawnManager.SpawnRat();
         }
     }
 
@@ -119,6 +126,12 @@ public class GameManager : MonoBehaviour
     {
         IsGamePlay = false;
 
+        // 게임 종료 시 쥐 스폰 코루틴 중지
+        if (spawnManager != null)
+        {
+            spawnManager.StopSpawnRat();
+        }
+
         if (m_gameClearUI != null)
         {
             m_gameClearUI.SetActive(true);
@@ -141,10 +154,5 @@ public class GameManager : MonoBehaviour
         {
             Destroy(rat);
         }
-    }
-
-    public void EndGame()
-    {
-        GameClear();
     }
 }

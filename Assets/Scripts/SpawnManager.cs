@@ -7,28 +7,32 @@ public class SpawnManager : MonoBehaviour
     //나중에 오브젝트 풀링에서 가져오게 하기
     [SerializeField] private GameObject m_ratPrefab; // 쥐 프리팹을 연결할 변수
     [SerializeField] private Transform[] m_spawnPoints; // 쥐가 생성될 위치들
-    [SerializeField] private float m_spawnInterval = 1.5f; // 쥐 생성 간격 (초)
+    [SerializeField] private float m_spawnInterval = 0.5f; // 쥐 생성 간격 (초)
 
     [SerializeField] private float m_roomHalfSize = 23f; // 방의 반지름 25 벽때문에 -2 해주기
 
-    private float[] m_spawnPosx;
-    private float[] m_spawnPosy;
-
-    private float m_randomPosx;
-    private float m_randomPosy;
-
     private Vector3 m_spawnPos;
+
+    [SerializeField]private Coroutine spawnCoroutine;
 
     public void SpawnRat()
     {
-        StartCoroutine(SpawnRatRoutine2());
+        // 이미 실행 중인 코루틴이 있다면 중지
+        if (spawnCoroutine != null)
+        {
+            StopCoroutine(spawnCoroutine);
+        }
+        //새로운 코루틴시작
+        spawnCoroutine = StartCoroutine(SpawnRatRoutine2());
     }
 
-    private void Update()
+    public void StopSpawnRat()
     {
-        if(!GameManager.Instance.IsGamePlay)
+        // 현재 실행 중인 코루틴 중지
+        if (spawnCoroutine != null)
         {
-            StopCoroutine(SpawnRatRoutine2());
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
         }
     }
 
@@ -54,24 +58,24 @@ public class SpawnManager : MonoBehaviour
         while (GameManager.Instance.IsGamePlay) // 게임이 끝날 때까지 무한 반복
         {
             yield return new WaitForSeconds(m_spawnInterval);
-            int value = Random.Range(0, 5);
+            int value = Random.Range(0, 4);
             switch(value)
             {
                 //x -23 고정
-                case 1:
+                case 0:
                     m_spawnPos = new Vector3(-23, 0, Random.Range(-23, 23));
                     Instantiate(m_ratPrefab, m_spawnPos, Quaternion.identity);
                     break;
                 //x 23 고정
-                case 2:
+                case 1:
                     m_spawnPos = new Vector3(23, 0, Random.Range(-23, 23));
                     Instantiate(m_ratPrefab, m_spawnPos, Quaternion.identity);
                     break;
-                case 3:
+                case 2:
                     m_spawnPos = new Vector3(Random.Range(-23, 23), 0, 23);
                     Instantiate(m_ratPrefab, m_spawnPos, Quaternion.identity);
                     break;
-                case 4:
+                case 3:
                     m_spawnPos = new Vector3(Random.Range(-23, 23), 0, -23);
                     Instantiate(m_ratPrefab, m_spawnPos, Quaternion.identity);
                     break;
